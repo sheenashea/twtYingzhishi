@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "iconfont"; /* Project id  */
+  src: url('iconfont.ttf?t=1673620509467') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 23px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+
+.icon-caidan:before {
+  content: "\e60b";
+}
+
+.icon-cai:before {
+  content: "\eb21";
+}
+
+.icon-pinglun:before {
+  content: "\e607";
+}
+
+.icon-xiai:before {
+  content: "\e61b";
+}
+
