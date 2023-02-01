@@ -1,8 +1,8 @@
 <template>
     <div class="navigate">
         <ul>
-          <li><a href=""><i class="iconfont">&#xe60b;</i></a></li>
-          <li><a href="#">Return to HomePage</a></li>
+          <li><a href="javascript:void(0);"><i class="iconfont">&#xe60b;</i></a></li>
+          <li><a href="/">Return to HomePage</a></li>
         </ul>
     </div>
     <div v-show="showLogin" class="label">

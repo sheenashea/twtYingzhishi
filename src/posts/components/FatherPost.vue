@@ -7,7 +7,7 @@
                     <a href="javascript:void(0);">
                     <img class="photo" src="../../assets/1.jpg">
                     </a>
-                    <h3 style="margin-bottom:0%">LV:{{ author.level }}</h3>
+                    <h3 style="margin-bottom:0%;margin-left: 300px;">LV:{{ author.level }}</h3>
                 </div>
                 <div class="head">
                     <h2>{{ author.title }}</h2>
@@ -145,9 +145,9 @@ export default defineComponent({
 .photo{
     height: 80px;
     width:80px;
-    margin-right: 0px;
     margin-top: 0px;
     user-select: none;
+    margin-left: 300px;
 }
 .head{
     width:50%;
