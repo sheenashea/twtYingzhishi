@@ -28,24 +28,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { nanoid } from 'nanoid'
 import NoticeContent from './NoticeContent.vue';
 export default defineComponent({
     name:'ReplyPost',
     components:{
         NoticeContent
     },
+    props:['id1','id2'],
     data () {
         return{
             newcomment:{
                 newtext:'',
-                newphoto:'',
                 isChecked:[],
-                toname:'熊童子',
             },
             showNotice:false,
             ahint: '',
-            currentType:0,
         }
     },
     methods:{
@@ -62,6 +59,10 @@ export default defineComponent({
         submit(){
             if(this.newcomment.isChecked.length){
                 console.log('ok');
+                if(this.newcomment.newtext.length)
+                {
+                    this.tosubmit()
+                }
                 this.newcomment.isChecked = [];
                 this.newcomment.newtext = '';
                 this.$emit('cancel');
@@ -71,6 +72,17 @@ export default defineComponent({
                     this.ahint = ''
 	}, 2100);     
             }
+        },
+        tosubmit(){
+            //开始实现submit功能
+            //判断是几级评论，返回参数不同，同时传个值让评论区组件响应更新
+            const form ={
+                id1: this.id1,
+                id2: this.id2,
+                content: this.newcomment.newtext
+            }
+            this.$emit('update',form)
+            //传值结束
         }
     },
 

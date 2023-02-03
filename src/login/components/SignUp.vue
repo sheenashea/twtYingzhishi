@@ -25,7 +25,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import axios from 'axios'
+import { register } from '../../api/sign'
+
 export default defineComponent({
     name:'SignUp',
     data () {
@@ -64,10 +65,12 @@ export default defineComponent({
         },
         async register(){
             if(this.check()){
-            await axios.post('/userinfo', {
-            username: this.signUpForm.username,
-            password: this.signUpForm.password,
-          }),
+            const form = {
+                username: this.signUpForm.username,
+                password: this.signUpForm.password,
+                email: this.signUpForm.emailAddress
+            }
+          await register(form),
           this.message = '注册成功'
           setTimeout(() => {
             this.message = ''

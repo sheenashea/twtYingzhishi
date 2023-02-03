@@ -1,4 +1,4 @@
-//暂时不用
+//不用
 import axios from 'axios'
 import { ElMessage  } from 'element-plus'
 // import { getToken } from '@/utils/auth'
@@ -17,7 +17,7 @@ export  const request =(options:any)=> {
     // request interceptor
     service.interceptors.request.use(
       (config:any) => {
-        const token =''//此处换成自己获取回来的token，通常存在在cookie或者store里面
+        const token =localStorage.getItem('token')//此处换成自己获取回来的token，通常存在在cookie或者store里面
         if (token) {
           // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
           config.headers['X-Token'] = token

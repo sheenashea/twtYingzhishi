@@ -18,4 +18,24 @@ const router = createRouter({
   routes
 })
 
+//路由守卫begin
+// router.beforeEach((to, from, next) => {
+//   //如果去往登录页和主页则放行 
+//     if (to.path === '/login' || to.path === '/') {
+//       next();
+//     } else {
+//       // 从本地存储里获取token
+//       const token = localStorage.getItem('token');
+//       // 判断token是否为空如果为空则跳转到登录页 如果有则放行
+//       if (token === null || token === '') {
+//         next({path:'/login'});
+//       } else {
+//         next();
+//       }
+//     }
+//   });
+//路由守卫end
+
 export default router
+
+//注释掉了路由守卫，记得添回来
