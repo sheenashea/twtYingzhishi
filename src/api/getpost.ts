@@ -38,7 +38,25 @@ const ans = {
           dislikeCount: 1,
           dislikeStatus: 1,
           replyList: [
-
+            {
+            id: 202345,//缺少了
+            reply: "沙发",
+            author: {
+               id: 100,
+               loginName: "hhh",
+               avatarurl: '../../assets/1.jpg',
+            },
+            target: {
+               id: 1,
+               loginName: "熊童子",
+               avatarurl: '../../assets/1.jpg',
+            },
+            likeCount: 0,
+            likeStatus: 0,
+            dislikeCount: 0,
+            dislikeStatus: 0,
+            showinput: false
+          }
           ],
           replyCount: 0,
           showinput: false,

@@ -70,12 +70,12 @@
        id: number,
        loginName: string,
        avatarurl: string,
-    }
+    },
     target: {
        id: number,
        loginName: string,
        avatarurl: string,
-    }
+    },
     likeCount: number,
     likeStatus: number,
     dislikeCount: number,

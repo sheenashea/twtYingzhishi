@@ -1,8 +1,8 @@
 <template>卡组排行<div class="rank">
-    <div class="t0"><img src="../p1.png"><span>作者：早八不如早六</span><h2>盘点十祸退环境单卡</h2></div>
-    <div class="t1"><img src="../p1.png"><span>作者：绫地宁宁</span><h2>这可能就是完爆吧</h2></div>
-    <div class="t2"><img src="../p1.png"><span>作者: Neko</span><h2>啊摆</h2></div>
-    <div class="t3"><img src="../p1.png"><span>作者: SekAo</span><h2>寄</h2></div>
+    <div class="t0"><img src="../assets/p1.png"><span>作者：早八不如早六</span><h2>盘点十祸退环境单卡</h2></div>
+    <div class="t1"><img src="../assets/p1.png"><span>作者：绫地宁宁</span><h2>这可能就是完爆吧</h2></div>
+    <div class="t2"><img src="../assets/p1.png"><span>作者: Neko</span><h2>啊摆</h2></div>
+    <div class="t3"><img src="../assets/p1.png"><span>作者: SekAo</span><h2>寄</h2></div>
   </div>
 </template>
 <script>

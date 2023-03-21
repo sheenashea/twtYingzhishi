@@ -27,7 +27,7 @@
   
   <script>
   
-  const axios = require('axios').default;
+  //const axios = require('axios').default;
   export default {
     name: 'App',
     components: {
@@ -38,23 +38,23 @@
         queryInfo: []
       }
     },
-    created () {
-      axios.get('?').then((re) =>{
-    console.log(re);
-    this.queryInfo = re.data;
-      })
-      this.getUserList()
-    },
+    // created () {
+    //   axios.get('?').then((re) =>{
+    // console.log(re);
+    // this.queryInfo = re.data;
+    //   })
+    //   this.getUserList()
+    // },
     methods: {
-      async getUserList () {
-        const { data: re } = await this.$http.get('users', {
-          params: this.queryInfo
-        })
-        if (re.meta.status !== 200) return this.$message.error('没有找到你要的内容')
-        this.userlist = re.data.users
-        this.total = re.data.total
-        console.log(re)
-      },
+      // async getUserList () {
+      //   const { data: re } = await this.$http.get('users', {
+      //     params: this.queryInfo
+      //   })
+      //   if (re.meta.status !== 200) return this.$message.error('没有找到你要的内容')
+      //   this.userlist = re.data.users
+      //   this.total = re.data.total
+      //   console.log(re)
+      // },
     }
   }
   </script>

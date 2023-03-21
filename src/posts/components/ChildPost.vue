@@ -10,7 +10,7 @@
            </div>
            <div class="info">
               <p class="first-username">{{ item.author.loginName }}</p>
-              <!--<p class="first-data">{{ 缺少时间 }}</p>-->
+              <p class="first-data"> 2023-3-21 </p>
            </div>
            <div class="first-content">
                <p class="first-comment">{{ item.comment }}</p>
@@ -39,7 +39,7 @@
                                 <span class="second-username">{{ son.loginName }}</span>
                                 <span style="font-size:smaller;font-family:Arial, Helvetica, sans-serif">回复&nbsp;{{ son.target.loginName }}</span>
                                 </p>
-                                <div class="second-data">{{  }}</div>
+                                <div class="second-data">2023-3-21</div>
                             </div>
                             <div class="second-content">
                                 <p class="second-comment">{{ son.reply }}</p>
