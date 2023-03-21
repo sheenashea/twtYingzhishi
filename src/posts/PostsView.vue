@@ -1,7 +1,21 @@
 <template>
     <div class="total">
+        <div class="navigate">
+        <ul>
+          <li><a href="javascript:void(0);"><i class="iconfont" @click="drop()">&#xe60b;</i></a></li>
+          <li><a href="/index">Return to HomePage</a></li>
+        </ul>
+    </div>
+    <div :class="dropdown">
+       <div class="dropdown-menu">
+          <a href="/radiers" class="menuItem" >攻略爆料</a>
+          <a href="/deck" class="menuItem" >卡组排行</a>
+          <a href="/login" class="menuItem" @click="removeLogin()">退出登录</a>
+          <a href="/mypage" class="menuItem" >个人中心</a>
+       </div>
+    </div>
         <!--<FatherPost :mainPost = "reponse.postList" :authorInfo = "reponse.authorList" @changelike="changelike($event)" @changedislike="changedislike($event)" @update="update($event)"></FatherPost>-->
-        <FatherPost :mainPost = "reponse.postList" :authorInfo = "reponse.authorList" ></FatherPost>
+        <FatherPost :mainPost = "reponse.postList" :authorInfo = "reponse.authorList" @update = "update($event)"></FatherPost>
         <ChildPost :comments = "reponse.commentVoList"></ChildPost>
     </div>
 </template>
@@ -11,7 +25,7 @@ import { defineComponent } from 'vue'
 import FatherPost from './components/FatherPost.vue';
 import ChildPost from './components/ChildPost.vue';
 import { getPost, changeLike, changeDislike, addPost } from '@/api/getpost';
-import type { getDiscussPost, addComment } from '@/api/types';
+import type { getDiscussPost, addComment, commentVoList } from '@/api/types';
 import { useRoute } from 'vue-router';
 export default defineComponent({
     name: 'PostsView',
@@ -23,6 +37,7 @@ export default defineComponent({
         return {
             route: useRoute(),
             reponse: {} as getDiscussPost,
+            dropdown: 'dropdown-content',
         }
     },
     created () {
@@ -77,14 +92,86 @@ export default defineComponent({
         //         this.discussPost.authorList = r.authorList,
         //         this.discussPost.postList = r.postList
         // }
+        update(e: commentVoList)
+        {
+            this.reponse.commentVoList.push(e);
+        },
+        drop () {
+            if(this.dropdown == 'dropdown-content') this.dropdown = 'dropdown-content2';
+            else this.dropdown = 'dropdown-content'
+        },
+        removeLogin () {
+            sessionStorage.removeItem('token')
+        }
     }
 })
 </script>
 
-<style>
+<style lang="less" scoped>
 .total{
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       overflow: hidden;
+       background-color: lightgray;
+    }
+
+    li {
+        float: right;
+    }
+
+    li a {
+       display: block;
+       color: black;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+}
+
+li a:hover{
+  background-color: #ccc;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown-content {
+     float: right;
+     visibility: hidden;
+     opacity: 0;
+     transition: all 0.5s ease-in-out;
+}
+.dropdown-menu {
+    float: right;
+    margin-top: 7px;
+    padding: 10px 8px 15px;
+    color: black;
+    background-color: #f3f3f3;
+    border-radius: 4px;
+    .menuItem {
+    width: 100%;
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    &:hover {
+        background-color: #ccc;
+    }
+}
+
+}
+   
+.dropdown-content2 {
+    float: right;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
 }
 </style>

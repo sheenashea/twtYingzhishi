@@ -39,7 +39,7 @@
   //主贴子信息接口返回类型  getdiscusspost
   export interface  postList {
     //帖子列表
-     id: number,
+     id: string,
      title: string,
      content: string,
      type: number,
@@ -51,51 +51,51 @@
 
  export interface authorList {
     //作者列表
-     userId: number,
+     userId: string,
      loginName: string,
-     password: number,
+     password: string,
      email: string,
      avatarurl: string,
      likeCount: number,
-     likeStatus: number,
+     likeStatus: boolean,
      dislikeCount: number,
-     dislikeStatus: number,
+     dislikeStatus: boolean,
  }
 
   export interface replyList {
     //回复列表
-    id: number,//缺少了
+    id: string,//缺少了
     reply: string,
     author: {
-       id: number,
+       id: string,
        loginName: string,
        avatarurl: string,
     },
     target: {
-       id: number,
+       id: string,
        loginName: string,
        avatarurl: string,
     },
     likeCount: number,
-    likeStatus: number,
+    likeStatus: boolean,
     dislikeCount: number,
-    dislikeStatus: number,
+    dislikeStatus: boolean,
     showinput: boolean
   } 
 
   export interface commentVoList {
     //评论列表
-    id: number,//缺少了
+    id: string,//缺少了
     comment: string,
     author: {
-      id: number,
+      id: string,
       loginName: string,
       avatarurl: string,
     },
     likeCount: number,
-    likeStatus: number,
+    likeStatus: boolean,
     dislikeCount: number,
-    dislikeStatus: number,
+    dislikeStatus: boolean,
     replyList: replyList[],
     replyCount: number,
     showinput: boolean,
@@ -109,12 +109,12 @@
 
    //添加评论,addComment 参数
    export interface addComment {
-     discussPostId: number,
-     id: number,
-     userId: number,
+     discussPostId: string,
+     id: string,
+     userId: string,
      entityType: number,
-     entityId: number,
-     targetId: number,
+     entityId: string,
+     targetId: string,
      content: string,
      createTime: Date,
      status: string,
@@ -123,16 +123,16 @@
    //like 修改
    export interface like {
       entityType: number,
-      entityId: number,
-      entityUserId: number,
-      postId: number,
+      entityId: string,
+      entityUserId: string,
+      postId: string,
    }
 
    //dislike修改
    export interface dislike {
        entityType: number,
-       entityId: number,
-       entityUserId: number,
-       postId: number,
+       entityId: string,
+       entityUserId: string,
+       postId: string,
    }
 

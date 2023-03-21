@@ -20,24 +20,24 @@
                 <i class="iconfont dislike" :class="{ 'bef':!item.dislikeCount,'aft':item.dislikeCount }" @click="changeFatherDislike(item)">&#xeb21;</i>{{ item.dislikeCount }}
                 <i class="iconfont comm" @click="show1(item)">&#xe607;</i>{{ item.replyCount }}
            </div>
-           <!--想想怎么修改-->
-           <div class="write" v-show="item.showinput">
-                <ReplyPost :id1 = 0 :id2 = 0 @cancel = "cancel(item)"></ReplyPost>
+    
            </div>
-           </div>
+           <div class="writtte" v-show="item.showinput">
+                <ReplyPost :id1 = 1 :id2 = "item.author.loginName" @cancel = "cancel(item)" @update ="update($event, item)"></ReplyPost>
+            </div>
            <div>
                 
                     <div class="second" v-for="son in item.replyList" :key="son.id">
                         <div class="lis">
                         <div class="topp">
                             <a href="JavaScript:;" class="second-img">
-                                <img :src="son.author.avatarurl">
+                                <img src="../../assets/1.jpg">
                             </a>
                         </div>
                             <div class="info">
                                 <p>
-                                <span class="second-username">{{ son.loginName }}</span>
-                                <span style="font-size:smaller;font-family:Arial, Helvetica, sans-serif">回复&nbsp;{{ son.target.loginName }}</span>
+                                <span class="second-username">{{ son.author.loginName }}</span>
+                                <span style="font-size:smaller;font-family:Arial, Helvetica, sans-serif">&nbsp;回复&nbsp;{{ son.target.loginName }}</span>
                                 </p>
                                 <div class="second-data">2023-3-21</div>
                             </div>
@@ -45,11 +45,14 @@
                                 <p class="second-comment">{{ son.reply }}</p>
                             </div>
                             <div class="second-right">
-                                 <i class="iconfont like" :class="{ 'bef':!son.likeStatus,'aft':son.likeStatus }" @click="changeSonLike(item,son)">&#xe61b;</i>{{ son.likeCount }}
-                                 <i class="iconfont dislike" :class="{ 'bef':!son.dislikeCount,'aft':son.dislikeCount }" @click="changeSonDislike(item,son)">&#xeb21;</i>{{ son.dislikeCount }}
+                                 <i class="iconfont like" :class="{ 'bef':!son.likeStatus,'aft':son.likeStatus }" @click="changeSonLike(son)">&#xe61b;</i>{{ son.likeCount }}
+                                 <i class="iconfont dislike" :class="{ 'bef':!son.dislikeCount,'aft':son.dislikeCount }" @click="changeSonDislike(son)">&#xeb21;</i>{{ son.dislikeCount }}
                                  <i class="iconfont comm" @click="show2(item, son)">&#xe607;</i>
                             </div>
-                
+                    
+                            </div>
+                            <div class="writte" v-show="son.showinput">
+                                  <ReplyPost :id1 = 2 :id2 = "son.author.loginName" @cancel = "cancel(son)" @update ="update($event, item)"></ReplyPost>
                             </div>
                     </div>
                  
@@ -79,30 +82,37 @@ export default defineComponent({
      methods:{
         //这四个函数需要修改
         changeFatherLike( i:commentVoList ){
-            this.$emit('changelike',1)
+            if(i.likeStatus) i.likeCount--;
+            else i.likeCount++;
+            i.likeStatus = !i.likeStatus;
         },
         changeFatherDislike( i:commentVoList ){
-            this.$emit('changelike',1)
+            if(i.dislikeStatus) i.dislikeCount--;
+            else i.dislikeCount++;
+            i.dislikeStatus = !i.dislikeStatus;
         },
-        changeSonLike( i:commentVoList, j:replyList ){
-            this.$emit('changelike',2)
+        changeSonLike(  i:replyList ){
+            if(i.likeStatus) i.likeCount--;
+            else i.likeCount++;
+            i.likeStatus = !i.likeStatus;
         },
-        changeSonDislike(i:commentVoList, j:replyList){
-            this.$emit('changelike',2)
+        changeSonDislike( i:replyList){
+            if(i.dislikeStatus) i.dislikeCount--;
+            else i.dislikeCount++;
+            i.dislikeStatus = !i.dislikeStatus;
         },
-        //这两个函数实现 传参 
+        //这两个函数实现 输入框 
         show1 (i: commentVoList) {
-            i.showinput = true;
-            this.parentId = 0;
-            this.currentId = i.id;
+            i.showinput = !i.showinput;
         },
         show2 (i: commentVoList, j : replyList) {
-            i.showinput = true;
-            this.parentId = i.id;
-            this.currentId = j.id;
+            j.showinput = !j.showinput;
         },
         cancel (i: commentVoList) {
             i.showinput = false;
+        },
+        update (e: replyList, i:commentVoList) {
+             i.replyList.push(e);
         }
      },
 })
@@ -216,11 +226,11 @@ a:hover{
     color:red;
 }
 .writte{
-    margin-top:37px;
-    margin-left: 0;
+    margin-top:5px;
+    margin-left: 17px;
 }
 .writtte{
-    margin-top:30px;
-    margin-left: -85px;
+    margin-top:5px;
+    margin-left: -20px;
 }
 </style>

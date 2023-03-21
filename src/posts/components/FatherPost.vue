@@ -1,7 +1,7 @@
 <template>
     <div class="post">
         <div class="card">
-            <div class="top"></div>
+            
             <div style="overflow:hidden">
                 <div class="userinfo">
                     <a href="javascript:void(0);">
@@ -12,7 +12,7 @@
                 <div class="head">
                     <h2>{{ mainPost.title }}</h2>
                     <span>作者:{{ authorInfo.loginName }}</span><br>
-                    <span>发帖时间{{ mainPost.createTime }}</span><br>
+                    <span>发帖时间:{{ mainPost.createTime }}</span><br>
                     <span>ip: 天津 </span>
                 </div>
             </div>
@@ -23,20 +23,20 @@
         </div>
         <div class="footer">
             <div class="icon">
-                <i class="iconfont like" :class="{ 'bef':!authorInfo.likeStatus,'aft':authorInfo.likeStatus }" @click="changelike()">&#xe61b;</i>{{ authorInfo.likeCount }}
-                <i class="iconfont dislike" :class="{ 'bef':!authorInfo.dislikeStatus,'aft':authorInfo.dislikeStatus }" @click="changedislike()">&#xeb21;</i>{{ authorInfo.dislikeCount }}
+                <i class="iconfont like" :class="{ 'bef':!authorInfo.likeStatus,'aft':authorInfo.likeStatus }" @click="changelike(authorInfo)">&#xe61b;</i>{{ authorInfo.likeCount }}
+                <i class="iconfont dislike" :class="{ 'bef':!authorInfo.dislikeStatus,'aft':authorInfo.dislikeStatus }" @click="changedislike(authorInfo)">&#xeb21;</i>{{ authorInfo.dislikeCount }}
                 <i class="iconfont comm" @click="show()">&#xe607;</i>{{ mainPost.commentCount }}
             </div>
         </div>
         <div class="write" v-show="whetherShow">
-             <ReplyPost :id1 = 0 :id2 = 0 @update="update($event)" @cancel ="cancel()"></ReplyPost>
+             <ReplyPost :id1 = 0 :id2 = '0' @update="update($event)" @cancel ="cancel()"></ReplyPost>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import type { addComment } from '@/api/types';
+import type { addComment, authorList, commentVoList } from '@/api/types';
 import ReplyPost from './ReplyPost.vue';
 
 export default defineComponent({
@@ -51,17 +51,21 @@ export default defineComponent({
     },
 
     methods: {
-        changelike () {
-           this.$emit('changelike',0);
+        changelike (s: authorList) {
+           if(s.likeStatus) s.likeCount--;
+           else s.likeCount++;
+           s.likeStatus = !s.likeStatus;
         },
-        changedislike () {
-            this.$emit('changedislike',0);
+        changedislike (s: authorList) {
+            if(s.dislikeStatus) s.dislikeCount--;
+            else s.dislikeCount++;
+            s.dislikeStatus = !s.dislikeStatus;
         },
-        update (e: addComment) {
-            this.$emit('update',e);
+        update (e: commentVoList) {
+            this.$emit('update', e)
         },
         show () {
-            this.whetherShow = true;
+            this.whetherShow = !this.whetherShow;
         },
         cancel () {
             this.whetherShow = false
@@ -76,7 +80,7 @@ export default defineComponent({
     font-family: 'Courier New', Courier, monospace;
     position: relative;
     display: flex;
-    flex-direction: column;;
+    flex-direction: column;
 }
 .card{
     overflow: hidden;

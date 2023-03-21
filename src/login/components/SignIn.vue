@@ -59,44 +59,45 @@ export default defineComponent({
         signInSkip(){
             this.$emit('skipLink1');
         },
-        async submitlogininfo(){
-            //校验
-            if(this.check()){
-            //登录信息发送begin
-            const form = {
-                loginName: this.loginForm.username,
-                passWord: this.loginForm.password
-            }
-            await login(form)
-                 .then((successResponse) => {//回调函数当get成功后执行
-                    console.log(1);
-                    console.log(successResponse);
-                 if (successResponse.code === 200) {//如果返回的状态码是200
-                 this.userToken = successResponse.token
-                 //localStorage.setItem('token',this.userToken)
-                 this.setUserInfo() 
-                 this.init();
-                 this.$router.replace({
-                  path: '/'
-                 });
-                  }
-                 if (successResponse.code === 400 ) {//如果返回状态码为400
-                    this.open();
-                    this.$router.replace({
-                  path: '/login'
-                 });
-                 }
-                 })
-                 .catch((failResponse) => {
-                 console.log(2);
-                 this.open();
-             });
-           //end
-            }
-        },
-        open(){
-            this.message = "登录失败"
-        },
+        // //此处开始重写
+        // async submitlogininfo(){
+        //     //校验
+        //     if(this.check()){
+        //     //登录信息发送begin
+        //     const form = {
+        //         loginName: this.loginForm.username,
+        //         passWord: this.loginForm.password
+        //     }
+        //     await login(form)
+        //          .then((successResponse) => {//回调函数当get成功后执行
+        //             console.log(1);
+        //             console.log(successResponse);
+        //          if (successResponse.code === 200) {//如果返回的状态码是200
+        //          this.userToken = successResponse.token
+        //          //localStorage.setItem('token',this.userToken)
+        //          this.setUserInfo() 
+        //          this.init();
+        //          this.$router.replace({
+        //           path: '/'
+        //          });
+        //           }
+        //          if (successResponse.code === 400 ) {//如果返回状态码为400
+        //             this.open();
+        //             this.$router.replace({
+        //           path: '/login'
+        //          });
+        //          }
+        //          })
+        //          .catch((failResponse) => {
+        //          console.log(2);
+        //          this.open();
+        //      });
+        //    //end
+        //     }
+        // },
+        // open(){
+        //     this.message = "登录失败"
+        // },
         check(){
             let okk = true;
             const checkuserName = /^[a-zA-Z0-9_-]{1,16}$/;
@@ -132,6 +133,21 @@ export default defineComponent({
                 setCookie("remember","") 
            }
         }, 
+        //本地重写submitlogininfo()
+        submitlogininfo () {
+            if(this.loginForm.username === '我' && this.loginForm.password === '12345678a')
+            {
+                this.userToken = new Date().getTime().toString();
+                sessionStorage.setItem('token',this.userToken);
+                this.setUserInfo();
+                this.init();
+                this.$router.replace({
+                    path: '/index'
+                });
+            }else{
+                this.message = "登录失败"
+            }
+        }
     }
 })
 </script>

@@ -27,6 +27,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { uuid } from 'vue-uuid'
 import NoticeContent from './NoticeContent.vue';
 export default defineComponent({
     name:'ReplyPost',
@@ -76,19 +77,49 @@ export default defineComponent({
             //开始实现submit功能
             //判断是几级评论，返回参数不同，同时传个值让评论区组件响应更新
             //这里需要修改!!!form几个参数代表的值要修改一下
-            const date = new Date()
-            const form ={
-                discussPostId: 0,
-                id: 0,
-                userId: this.id1,
-                entityType: 0,
-                entityId: 0,
-                targetId: this.id2,
-                content: this.newcomment.newtext,
-                createTime: date,
-                status: 'ok',
+            if(this.id1 == 0)
+            {
+                //包装一级评论
+                const form = {
+                     id: uuid.v1(),//缺少了
+                     comment: this.newcomment.newtext,
+                     author: {
+                          id: '011',
+                          loginName: '我',
+                          avatarurl: '../../assets/1.jpg',
+                     },
+                     likeCount: 0,
+                     likeStatus: false,
+                     dislikeCount: 0,
+                     dislikeStatus: false,
+                     replyList: [],
+                     replyCount: 0,
+                     showinput: false,
+                }
+                this.$emit('update', form)
+            }else{
+                //包装二级评论
+                const form = {
+                    id: uuid.v1(),//缺少了
+                    reply: this.newcomment.newtext,
+                    author: {
+                    id: '011',
+                    loginName: '我',
+                    avatarurl: '../../assets/1.jpg',
+                    },
+                    target: {
+                    id: this.id2,
+                    loginName: this.id2,
+                    avatarurl: '../../assets/1.jpg',
+                    },
+                    likeCount: 0,
+                    likeStatus: false,
+                    dislikeCount: 0,
+                    dislikeStatus: false,
+                    showinput: false
+                }
+                this.$emit('update', form)
             }
-            this.$emit('update',form)
             //传值结束
         }
     },

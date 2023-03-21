@@ -1,9 +1,17 @@
 <template>
     <div class="navigate">
         <ul>
-          <li><a href="javascript:void(0);"><i class="iconfont">&#xe60b;</i></a></li>
-          <li><a href="/">Return to HomePage</a></li>
+          <li><a href="javascript:void(0);"><i class="iconfont" @click="drop()">&#xe60b;</i></a></li>
+          <li><a href="/index">Return to HomePage</a></li>
         </ul>
+    </div>
+    <div :class="dropdown">
+       <div class="dropdown-menu">
+          <a href="/radiers" class="menuItem" >攻略爆料</a>
+          <a href="/deck" class="menuItem" >卡组排行</a>
+          <a href="/posts" class="menuItem">帖子页面</a>
+          <a href="/mypage" class="menuItem" >个人中心</a>
+       </div>
     </div>
     <div v-show="showLogin" class="label">
          <SignIn @skipLink1="skipLink()"></SignIn>
@@ -24,19 +32,24 @@ export default defineComponent ({
     },
     data(){
        return{
-           showLogin:true
+           showLogin: true,
+           dropdown: 'dropdown-content',
        }
     },
     methods:{
         skipLink(){
             this.showLogin = !this.showLogin;
             //console.log(this.showLogin); 
-        }
+        },
+        drop () {
+            if(this.dropdown == 'dropdown-content') this.dropdown = 'dropdown-content2';
+            else this.dropdown = 'dropdown-content'
+        },
     }
 })
 </script>
 
-<style>
+<style lang="less" scoped>
    .label{
        text-align: center;
     }
@@ -67,4 +80,37 @@ li a:hover{
   color: black;
 }
 
+.dropdown-content {
+     float: right;
+     visibility: hidden;
+     opacity: 0;
+     transition: all 0.5s ease-in-out;
+}
+.dropdown-menu {
+    margin-top: 7px;
+    padding: 10px 8px 15px;
+    color: black;
+    background-color: aliceblue;
+    border-radius: 4px;
+    .menuItem {
+    width: 100%;
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    border-radius: 4px;
+    &:hover {
+        background-color: lightblue;
+    }
+}
+
+}
+   
+.dropdown-content2 {
+    float: right;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.6s ease-in-out;
+}
 </style>

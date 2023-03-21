@@ -35,7 +35,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'posts',
     component: () => import('@/posts/PostsView.vue')
   },
-  
+  {
+    path: '/mypage',
+    name: 'personpage',
+    component: () => import('@/personpage/PersonPage.vue')
+  }
 ]
 
 const router = createRouter({
@@ -44,21 +48,21 @@ const router = createRouter({
 })
 
 //路由守卫begin
-// router.beforeEach((to, from, next) => {
-//   //如果去往登录页和主页则放行 
-//     if (to.path === '/login' || to.path === '/') {
-//       next();
-//     } else {
-//       // 从本地存储里获取token
-//       const token = localStorage.getItem('token');
-//       // 判断token是否为空如果为空则跳转到登录页 如果有则放行
-//       if (token === null || token === '') {
-//         next({path:'/login'});
-//       } else {
-//         next();
-//       }
-//     }
-//   });
+router.beforeEach((to, from, next) => {
+  //如果去往登录页和主页则放行 
+    if (to.path === '/login' || to.path === '/index') {
+      next();
+    } else {
+      // 从本地存储里获取token
+      const token = sessionStorage.getItem('token');
+      // 判断token是否为空如果为空则跳转到登录页 如果有则放行
+      if (token === null || token === '') {
+        next({path:'/login'});
+      } else {
+        next();
+      }
+    }
+  });
 //路由守卫end
 
 export default router

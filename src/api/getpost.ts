@@ -3,7 +3,7 @@ import type { getDiscussPost, addComment, like, dislike } from './types'
 
 const ans = {
     postList: {
-      id: 10034,
+      id: '0',
       title: "钢铁的反叛者",
       content: "我是一个帖子",
       type: 0,
@@ -13,48 +13,48 @@ const ans = {
       score: 23,
     },
     authorList: {
-      userId: 10234,
+      userId: '0',
       loginName: "sss",
-      password: 19287365,
-      email: "3022244111@tju.com",
+      password: '19287365',
+      email: "302224111@tju.com",
       avatarurl: '1.jpg',
       likeCount: 12,
-      likeStatus: 1,
+      likeStatus: true,
       dislikeCount: 0,
-      dislikeStatus: 0,
+      dislikeStatus: false,
       showinput: false,
     },
     commentVoList: [
         {
-          id: 202212,//缺少了
+          id: '0',//缺少了
           comment: "string",
           author: {
-            id: 1,
+            id: '1',
             loginName: "熊童子",
             avatarurl: '1.jpg',
           },
           likeCount: 0,
-          likeStatus: 0,
+          likeStatus: false,
           dislikeCount: 1,
-          dislikeStatus: 1,
+          dislikeStatus: true,
           replyList: [
             {
-            id: 202345,//缺少了
+            id: '0',//缺少了
             reply: "沙发",
             author: {
-               id: 100,
+               id: '2',
                loginName: "hhh",
                avatarurl: '../../assets/1.jpg',
             },
             target: {
-               id: 1,
+               id: '1',
                loginName: "熊童子",
                avatarurl: '../../assets/1.jpg',
             },
             likeCount: 0,
-            likeStatus: 0,
+            likeStatus: false,
             dislikeCount: 0,
-            dislikeStatus: 0,
+            dislikeStatus: false,
             showinput: false
           }
           ],
