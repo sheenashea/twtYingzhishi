@@ -2,12 +2,12 @@
     
 <Swiper :speed="2" :direction="'left'"></Swiper>
     <div class="rank">
-    <!--<div class="p0"><div v-for = "post in RadierPost" :key=id></div>--><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
-    <!--<div class="p1"><div v-for = "post in RadierPost" :key=id></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
-    <div class="p2"><div v-for = "post in RadierPost" :key=id></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
-    <div class="p3"><div v-for = "post in RadierPost" :key=id></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
+    <div class="p0"><div v-for = "(post, index) in RadierPost" :key=index><img :src="item.img" alt=""></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
+    <div class="p1"><div v-for = "(post, index) in RadierPost" :key=index><img :src="item.img" alt=""></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
+    <div class="p2"><div v-for = "(post, index) in RadierPost" :key=index><img :src="item.img" alt=""></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
+    <div class="p3"><div v-for = "(post, index) in RadierPost" :key=index><img :src="item.img" alt=""></div><LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents></div>
   </div>
--->
+
 </template>
 <script>
 import LikeComponents from "../components/LikeComponents.vue"
@@ -21,21 +21,27 @@ export default {
   },   
    data(){
         return{
-        RadierPost:[]
+        RadierPost:[
+          {img: require('../assets/R1.png')},
+          {img: require('../assets/R2.png')},
+          {img: require('../assets/R3.png')},
+          {img: require('../assets/R4.png')},
+        ],
+
         }
       },
       mounted() {
        this.RadierPost();
       },
-    methods: {
+//     methods: {
 
-      getPost() {
-        axios.get('?').then((res) =>{
-  console.log(res);
-  this.RadierPost = res.data;
-})
-      }
-    },
+//       getPost() {
+//         axios.get('?').then((res) =>{
+//   console.log(res);
+//   this.RadierPost = res.data;
+// })
+//       }
+//     },
   
 
   
