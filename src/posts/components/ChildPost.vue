@@ -1,24 +1,24 @@
 <template>
     <div class="comments">
-        <div class="first-box" v-for="item in comments" :key="item.commentVoList.id">
+        <div class="first-box" v-for="item in comments" :key="item.id">
         <div class="first">
            <div style="display:flex;flex-direction:column">
            <a href="javascript:;" class="first-img">
-              <img :src="item.commentVoList.author.avatarurl"/>
+              <img src= '../../assets/1.jpg' />
            </a>
            <a href="javascript:;" style="font-size:xx-small;flex-shrink: 1;user-select: none;" ></a>
            </div>
            <div class="info">
-              <p class="first-username">{{ item.commentVoList.author.loginName }}</p>
+              <p class="first-username">{{ item.author.loginName }}</p>
               <!--<p class="first-data">{{ 缺少时间 }}</p>-->
            </div>
            <div class="first-content">
-               <p class="first-comment">{{ item.commentVoList.content }}</p>
+               <p class="first-comment">{{ item.comment }}</p>
            </div>
            <div class="first-right">
-                <i class="iconfont like" :class="{ 'bef':!item.commentVoList.likeStatus,'aft':item.commentVoList.likeStatus }" @click="changeFatherLike(item)">&#xe61b;</i>{{ item.commentVoList.likeCount }}
-                <i class="iconfont dislike" :class="{ 'bef':!item.commentVoList.dislikeCount,'aft':item.commentVoList.dislikeCount }" @click="changeFatherDislike(item)">&#xeb21;</i>{{ item.commentVoList.dislikeCount }}
-                <i class="iconfont comm" @click="show1(item)">&#xe607;</i>{{ item.commentVoList.replyCount }}
+                <i class="iconfont like" :class="{ 'bef':!item.likeStatus,'aft':item.likeStatus }" @click="changeFatherLike(item)">&#xe61b;</i>{{ item.likeCount }}
+                <i class="iconfont dislike" :class="{ 'bef':!item.dislikeCount,'aft':item.dislikeCount }" @click="changeFatherDislike(item)">&#xeb21;</i>{{ item.dislikeCount }}
+                <i class="iconfont comm" @click="show1(item)">&#xe607;</i>{{ item.replyCount }}
            </div>
            <!--想想怎么修改-->
            <div class="write" v-show="item.showinput">
@@ -27,7 +27,7 @@
            </div>
            <div>
                 
-                    <div class="second" v-for="son in item.commentVoList.replyList" :key="son.id">
+                    <div class="second" v-for="son in item.replyList" :key="son.id">
                         <div class="lis">
                         <div class="topp">
                             <a href="JavaScript:;" class="second-img">
@@ -61,7 +61,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import ReplyPost from './ReplyPost.vue'
-import type { replyList, commentVoLists } from '@/api/types';
+import type { replyList, commentVoList } from '@/api/types';
 
 export default defineComponent({
     name:'ChildPost',
@@ -78,30 +78,30 @@ export default defineComponent({
     },
      methods:{
         //这四个函数需要修改
-        changeFatherLike( i:commentVoLists ){
+        changeFatherLike( i:commentVoList ){
             this.$emit('changelike',1)
         },
-        changeFatherDislike( i:commentVoLists ){
+        changeFatherDislike( i:commentVoList ){
             this.$emit('changelike',1)
         },
-        changeSonLike( i:commentVoLists, j:replyList ){
+        changeSonLike( i:commentVoList, j:replyList ){
             this.$emit('changelike',2)
         },
-        changeSonDislike(i:commentVoLists, j:replyList){
+        changeSonDislike(i:commentVoList, j:replyList){
             this.$emit('changelike',2)
         },
         //这两个函数实现 传参 
-        show1 (i: commentVoLists) {
+        show1 (i: commentVoList) {
             i.showinput = true;
             this.parentId = 0;
-            this.currentId = i.commentVoList.id;
+            this.currentId = i.id;
         },
-        show2 (i: commentVoLists, j : replyList) {
+        show2 (i: commentVoList, j : replyList) {
             i.showinput = true;
-            this.parentId = i.commentVoList.id;
+            this.parentId = i.id;
             this.currentId = j.id;
         },
-        cancel (i: commentVoLists) {
+        cancel (i: commentVoList) {
             i.showinput = false;
         }
      },

@@ -80,6 +80,7 @@
     likeStatus: number,
     dislikeCount: number,
     dislikeStatus: number,
+    showinput: boolean
   } 
 
   export interface commentVoList {
@@ -90,13 +91,14 @@
       id: number,
       loginName: string,
       avatarurl: string,
-    }
+    },
     likeCount: number,
     likeStatus: number,
     dislikeCount: number,
     dislikeStatus: number,
     replyList: replyList[],
     replyCount: number,
+    showinput: boolean,
   }
 
   export interface getDiscussPost {
@@ -134,14 +136,3 @@
        postId: number,
    }
 
-   //自定义type
-   export interface commentVoLists {
-       commentVoList: commentVoList,
-       showinput: boolean
-   }
-
-   export interface getDiscussPosts {
-       postList: postList,
-       authorList: authorList,
-       commentVoLists: commentVoLists[]
-   }

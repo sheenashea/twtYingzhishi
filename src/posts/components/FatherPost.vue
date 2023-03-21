@@ -5,15 +5,15 @@
             <div style="overflow:hidden">
                 <div class="userinfo">
                     <a href="javascript:void(0);">
-                    <img class="photo" :src="authorInfo.avatarurl">
+                    <img class="photo" :src="pic">
                     </a>
-                    <!--缺少等级<h3 style="margin-bottom:0%;margin-left: 300px;">LV:{{ author.userinfo.level }}</h3>-->
+                    <h3 style="margin-bottom:0%;margin-left: 300px;">LV:{{ 114 }}</h3>
                 </div>
                 <div class="head">
                     <h2>{{ mainPost.title }}</h2>
                     <span>作者:{{ authorInfo.loginName }}</span><br>
                     <span>发帖时间{{ mainPost.createTime }}</span><br>
-                    <!--缺少ip地址<span>ip:{{ author.userinfo.address }}</span>-->
+                    <span>ip: 天津 </span>
                 </div>
             </div>
         </div>
@@ -46,6 +46,7 @@ export default defineComponent({
     data () {
         return {
            whetherShow: false,
+           pic: require('../../assets/' + this.authorInfo.avatarurl)
         }
     },
 

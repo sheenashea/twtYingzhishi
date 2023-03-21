@@ -8,19 +8,9 @@ const routes: Array<RouteRecordRaw> = [
   {
      path: '/index',
      name: 'home',
-     component: () => import('@/HomeView.vue')
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/login/LoginView.vue')
-  },
-  {
-    path: '/posts',
-    name: 'posts',
-    component: () => import('@/posts/PostsView.vue')
-  },
-  {
+     component: () => import('@/HomeView.vue'),
+     children:[
+      {
     path: '/radiers',
     name: 'radiers',
     component: () => import(/* webpackChunkName: "about" */ '../views/RadiersView.vue')
@@ -33,6 +23,19 @@ const routes: Array<RouteRecordRaw> = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/DeckView.vue')
   }
+     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/login/LoginView.vue')
+  },
+  {
+    path: '/posts',
+    name: 'posts',
+    component: () => import('@/posts/PostsView.vue')
+  },
+  
 ]
 
 const router = createRouter({
