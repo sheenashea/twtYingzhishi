@@ -1,8 +1,8 @@
 
 <template>
     <div class="swiperBox">
-        <!--<img class="imgLeft" @click="clickLeft" src="../../../assets/img/左.png" alt="">-->
-        <!--<img class="imgRight" @click="clickRight" src="../../../assets/img/右.png" alt="">-->
+        <img class="imgLeft" @click="clickLeft" src="../assets/left.png" alt="">
+        <img class="imgRight" @click="clickRight" src="../assets/right.png" alt="">
         <div id="swiper">
             <div class="imgBox">
                 <div class="imgDiv" v-for="(item,index) of imgList" :key="index">
@@ -22,11 +22,10 @@ export default {
     data() {
         return {
             imgList: [
-                require('../assets/logo.png'),
-                require('../assets/logo.png'),
-                require('../assets/logo.png'),
-                require('../assets/logo.png'),
-                require('../assets/logo.png'),
+                require('../assets/logo1.png'),
+                require('../assets/logo2.png'),
+                require('../assets/logo3.png'),
+                require('../assets/logo4.png'),
             ],
             timer: null,
             theSpeed: this.speed,
