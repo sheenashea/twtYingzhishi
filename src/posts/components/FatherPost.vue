@@ -5,140 +5,65 @@
             <div style="overflow:hidden">
                 <div class="userinfo">
                     <a href="javascript:void(0);">
-                    <img class="photo" :src="author.userinfo.photo">
+                    <img class="photo" :src="authorInfo.avatarurl">
                     </a>
-                    <h3 style="margin-bottom:0%;margin-left: 300px;">LV:{{ author.userinfo.level }}</h3>
+                    <!--缺少等级<h3 style="margin-bottom:0%;margin-left: 300px;">LV:{{ author.userinfo.level }}</h3>-->
                 </div>
                 <div class="head">
-                    <h2>{{ author.title }}</h2>
-                    <span>作者:{{ author.userinfo.username }}</span><br>
-                    <span>发帖时间{{ author.data }}</span><br>
-                    <span>ip:{{ author.userinfo.address }}</span>
+                    <h2>{{ mainPost.title }}</h2>
+                    <span>作者:{{ authorInfo.loginName }}</span><br>
+                    <span>发帖时间{{ mainPost.createTime }}</span><br>
+                    <!--缺少ip地址<span>ip:{{ author.userinfo.address }}</span>-->
                 </div>
             </div>
         </div>
         <div class="content">
-         <p>{{ author.content }}
+         <p>{{ mainPost.content }}
         </p>
         </div>
         <div class="footer">
             <div class="icon">
-                <i class="iconfont like" :class="{ 'bef':!author.whetherLike,'aft':author.whetherLike }" @click="changelike()">&#xe61b;</i>{{ author.popular.likenum }}
-                <i class="iconfont dislike" :class="{ 'bef':!author.whetherDislike,'aft':author.whetherDislike }" @click="changedislike()">&#xeb21;</i>{{ author.popular.dislikenum }}
-                <i class="iconfont comm" @click="show()">&#xe607;</i>{{ len }}
+                <i class="iconfont like" :class="{ 'bef':!authorInfo.likeStatus,'aft':authorInfo.likeStatus }" @click="changelike()">&#xe61b;</i>{{ authorInfo.likeCount }}
+                <i class="iconfont dislike" :class="{ 'bef':!authorInfo.dislikeStatus,'aft':authorInfo.dislikeStatus }" @click="changedislike()">&#xeb21;</i>{{ authorInfo.dislikeCount }}
+                <i class="iconfont comm" @click="show()">&#xe607;</i>{{ mainPost.commentCount }}
             </div>
         </div>
         <div class="write" v-show="whetherShow">
-             <ReplyPost @cancel="cancel()" :id1 = 'emp' :id2 = 'emp'></ReplyPost>
+             <ReplyPost :id1 = 0 :id2 = 0 @update="update($event)" @cancel ="cancel()"></ReplyPost>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import type { addComment } from '@/api/types';
 import ReplyPost from './ReplyPost.vue';
-import mybus from '../mybus'
-import { getFirstPost,changeDislike,changeLike } from '../../api/getpost'
-import { useRoute } from 'vue-router'
-import type { MainPostInfo } from '../../api/types'
+
 export default defineComponent({
     name:'FatherPost',
     components:{ ReplyPost },
+    props:['mainPost', 'authorInfo'] ,
     data () {
-        return{
-            // author:{
-            //      id:1,
-            //      title:'钢铁的反叛者-巫师攻略',
-            //      username:'unknown',
-            //      level:114,
-            //      time:'2022年12月19日',
-            //      address:'天津',
-            //      content:`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. 
-            //               Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar 
-            //               sic tempor. Sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-            //               Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus pronin sapien 
-            //               nunc accuan eget.
-            //               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida 
-            //               dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque 
-            //               penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, 
-            //               felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.
-            //               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida 
-            //               dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis natoque 
-            //               penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, 
-            //               felis tellus mollis orci, sed rhoncus pronin sapien nunc accuan eget.`,
-                          
-            //      popular:{
-            //              likenum:0,
-            //              dislikenum:0,
-            //              commentnum:0
-            //              },
-            // },
-            len: 0,
-            author:{} as MainPostInfo,
-            whetherShow:false,
-            route: useRoute(),
-            emp: ''
+        return {
+           whetherShow: false,
         }
     },
 
-    mounted(){
-        //响应渲染
-        getFirstPost(this.route.query.id)
-        .then(response => {
-            this.author = response.mainPost;
-            this.len = response.comments.length
-          })
-//         //mybus传参
-//         mybus.on('showcommentsnumber',data=>{
-//  (this.author.popular.commentnum as any) = data;
-//  console.log(data);
-// })
-    },
-
-    updated(){
-//mybus传参
-        mybus.on('showcommentsnumber',data=>{
- (this.len as any) = data;
- console.log(data);
-})
-    },
-
-    methods:{
-        async changelike () {
-            if (this.author.whetherLike == false)
-            {
-                this.author.whetherLike = true
-                this.author.popular.likenum++;
-            }else{
-                this.author.whetherLike = false
-                this.author.popular.likenum--;
-            }
-            const likeinfo = {
-                status: this.author.whetherLike,
-                num: this.author.popular.likenum,
-            }
-            await changeLike(likeinfo,this.route.query.id)
+    methods: {
+        changelike () {
+           this.$emit('changelike',0);
         },
-        async changedislike () {
-            if (this.author.whetherDislike == false)
-            {
-                this.author.whetherDislike = true
-                this.author.popular.dislikenum++;
-            }else{
-                this.author.whetherDislike = false;
-                this.author.popular.dislikenum--;
-            }
-            const dislikeinfo = {
-                status: this.author.whetherDislike,
-                num: this.author.popular.dislikenum,
-            }
-            await changeDislike(dislikeinfo,this.route.query.id)
+        changedislike () {
+            this.$emit('changedislike',0);
+        },
+        update (e: addComment) {
+            this.$emit('update',e);
         },
         show () {
-            this.whetherShow = !this.whetherShow;
+            this.whetherShow = true;
         },
-        cancel(){
-            this.whetherShow = false;
+        cancel () {
+            this.whetherShow = false
         }
     },
 })

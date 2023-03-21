@@ -66,8 +66,8 @@ export default defineComponent({
         async register(){
             if(this.check()){
             const form = {
-                username: this.signUpForm.username,
-                password: this.signUpForm.password,
+                loginName: this.signUpForm.username,
+                passWord: this.signUpForm.password,
                 email: this.signUpForm.emailAddress
             }
           await register(form),

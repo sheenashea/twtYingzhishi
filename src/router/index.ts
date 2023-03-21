@@ -2,6 +2,15 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/',
+    redirect: '/index',
+  },
+  {
+     path: '/index',
+     name: 'home',
+     component: () => import('@/HomeView.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/login/LoginView.vue')
@@ -50,5 +59,3 @@ const router = createRouter({
 //路由守卫end
 
 export default router
-
-//注释掉了路由守卫，记得添回来

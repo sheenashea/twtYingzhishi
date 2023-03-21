@@ -64,8 +64,8 @@ export default defineComponent({
             if(this.check()){
             //登录信息发送begin
             const form = {
-                username: this.loginForm.username,
-                password: this.loginForm.password
+                loginName: this.loginForm.username,
+                passWord: this.loginForm.password
             }
             await login(form)
                  .then((successResponse) => {//回调函数当get成功后执行

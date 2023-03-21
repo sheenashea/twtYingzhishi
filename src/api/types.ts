@@ -1,109 +1,147 @@
   //登录接口发送信息类型
   export interface LoginData {
-    username: string,
-    password: string,
+    loginName: string,
+    passWord: string,
   }
    
   //登录接口返回值类型 
   export interface LoginRes {
     code: number,
+    success: boolean,
     token: string
   }
    
   //用户信息接口返回值类型 
-  export interface UserInfoRes {
-    userid: string,
-    username: string,
-    photo: string,
-    address: string,
-    level: number,
-    email: string,
-    totalLikenum: number,
-    totalDislikenum: number
-  }
+  //  export interface UserInfoRes {
+  //   userid: string,
+  //   username: string,
+  //   photo: string,
+  //   address: string,
+  //   level: number,
+  //   email: string,
+  //   totalLikenum: number,
+  //   totalDislikenum: number
+  // }
 
   //注册接口信息发送类型
   export interface RegisterData {
-    username: string,
-    password: string,
+    loginName: string,
+    passWord: string,
     email: string
   }
+
+  //注册接口返回值类型
+  export interface RegisterRes {
+    code: number,
+    success: boolean,
+  }
   
-  //主贴子信息接口返回类型
-  export interface  MainPostInfo {
-     userinfo: UserInfoRes,
-     id:string,
-     data: string,
+  //主贴子信息接口返回类型  getdiscusspost
+  export interface  postList {
+    //帖子列表
+     id: number,
      title: string,
      content: string,
-     popular:{
-      likenum:number,
-      dislikenum:number,
-     }
-     whetherLike:boolean,
-     whetherDislike:boolean
+     type: number,
+     status: number,
+     createTime: Date,
+     commentCount: number,
+     score: number,
   }
 
-  //评论信息返回接口类型
-
-  export interface SonComment {
-    mainpostinfo: MainPostInfo,
-    tosomeone: string
-  }
-
-  export interface UserCommentInfo {
-       mainpostinfo: MainPostInfo,
-       sons:SonComment[]
-  }
-
-  //返回信息
-
-  export interface PostInfo {
-    mainPost: MainPostInfo,
-    comments: UserCommentInfo[]
-  }
-
-  //评论信息发送接口
-  export interface SubmitComment {
-    id1: string,
-    id2: string,
-    content: string
-  }
-  
-  //father
-  //是否喜爱踩
-  export interface StatusInfo {
-     status: boolean,
-     num: number,
-  }
-
-  //child
-  //是否喜爱踩
-  export interface LikeInfoComment {
-    postId:string,
-    commentId:string,
-    status: boolean,
-    num: number,
+ export interface authorList {
+    //作者列表
+     userId: number,
+     loginName: string,
+     password: number,
+     email: string,
+     avatarurl: string,
+     likeCount: number,
+     likeStatus: number,
+     dislikeCount: number,
+     dislikeStatus: number,
  }
 
+  export interface replyList {
+    //回复列表
+    id: number,//缺少了
+    reply: string,
+    author: {
+       id: number,
+       loginName: string,
+       avatarurl: string,
+    }
+    target: {
+       id: number,
+       loginName: string,
+       avatarurl: string,
+    }
+    likeCount: number,
+    likeStatus: number,
+    dislikeCount: number,
+    dislikeStatus: number,
+  } 
 
+  export interface commentVoList {
+    //评论列表
+    id: number,//缺少了
+    comment: string,
+    author: {
+      id: number,
+      loginName: string,
+      avatarurl: string,
+    }
+    likeCount: number,
+    likeStatus: number,
+    dislikeCount: number,
+    dislikeStatus: number,
+    replyList: replyList[],
+    replyCount: number,
+  }
 
- /*
- */
- //以下为为了方便书写的自定义type
-   export interface SonComments {
-       soncomments: SonComment
-       showinput:boolean//需要添加
+  export interface getDiscussPost {
+    postList: postList,
+    authorList: authorList,
+    commentVoList: commentVoList[]
+  }
+
+   //添加评论,addComment 参数
+   export interface addComment {
+     discussPostId: number,
+     id: number,
+     userId: number,
+     entityType: number,
+     entityId: number,
+     targetId: number,
+     content: string,
+     createTime: Date,
+     status: string,
    }
 
-   export interface FatherPost {
-      firstComment: MainPostInfo
-      showinput:boolean,//需要添加
-      showSons: boolean,//需要添加
-      showSonsInfo:string,//需要添加
+   //like 修改
+   export interface like {
+      entityType: number,
+      entityId: number,
+      entityUserId: number,
+      postId: number,
    }
 
-   export interface CommentType {
-      fatherComment: FatherPost,
-      secondComment: SonComments[]
+   //dislike修改
+   export interface dislike {
+       entityType: number,
+       entityId: number,
+       entityUserId: number,
+       postId: number,
+   }
+
+   //自定义type
+   export interface commentVoLists {
+       commentVoList: commentVoList,
+       showinput: boolean
+   }
+
+   export interface getDiscussPosts {
+       postList: postList,
+       authorList: authorList,
+       commentVoLists: commentVoLists[]
    }

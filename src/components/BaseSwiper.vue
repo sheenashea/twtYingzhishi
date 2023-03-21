@@ -1,8 +1,8 @@
 
 <template>
     <div class="swiperBox">
-        <img class="imgLeft" @click="clickLeft" src="../../../assets/img/左.png" alt="">
-        <img class="imgRight" @click="clickRight" src="../../../assets/img/右.png" alt="">
+        <!--<img class="imgLeft" @click="clickLeft" src="../../../assets/img/左.png" alt="">-->
+        <!--<img class="imgRight" @click="clickRight" src="../../../assets/img/右.png" alt="">-->
         <div id="swiper">
             <div class="imgBox">
                 <div class="imgDiv" v-for="(item,index) of imgList" :key="index">

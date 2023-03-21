@@ -6,7 +6,6 @@
             placeholder="请输入评论 . . . "
             v-model="newcomment.newtext"
             />
-            <button class="btn">上传图片</button>
         </div>
         <div class="input">
             <div class="foot">
@@ -16,7 +15,7 @@
                  </div>
                  <div>
                      <button class="btn" style="top:0;right:131px;background-color: blue;" @click="submit()">发布</button>
-                     <button class="btn" style="top:0;right:0;background-color: blue;" @click="cancel()">取消</button>
+                     <button class="btn" style="top:0;right:0px;background-color: blue;" @click="cancel()">取消</button>
                  </div>
             </div>
         </div>
@@ -76,10 +75,18 @@ export default defineComponent({
         tosubmit(){
             //开始实现submit功能
             //判断是几级评论，返回参数不同，同时传个值让评论区组件响应更新
+            //这里需要修改!!!form几个参数代表的值要修改一下
+            const date = new Date()
             const form ={
-                id1: this.id1,
-                id2: this.id2,
-                content: this.newcomment.newtext
+                discussPostId: 0,
+                id: 0,
+                userId: this.id1,
+                entityType: 0,
+                entityId: 0,
+                targetId: this.id2,
+                content: this.newcomment.newtext,
+                createTime: date,
+                status: 'ok',
             }
             this.$emit('update',form)
             //传值结束
