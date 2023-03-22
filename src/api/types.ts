@@ -12,16 +12,17 @@
   }
    
   //用户信息接口返回值类型 
-  //  export interface UserInfoRes {
-  //   userid: string,
-  //   username: string,
-  //   photo: string,
-  //   address: string,
-  //   level: number,
-  //   email: string,
-  //   totalLikenum: number,
-  //   totalDislikenum: number
-  // }
+   export interface UserInfoRes {
+    userid: string,
+    username: string | undefined,
+    avatarurl: string,
+    address: string,
+    level: number,
+    email: string,
+    totalLikenum: number,
+    totalDislikenum: number,
+    passWord: string,
+  }
 
   //注册接口信息发送类型
   export interface RegisterData {
@@ -136,3 +137,11 @@
        postId: string,
    }
 
+//修改信息
+   export interface updateUserInfo {
+      id: string,
+      loginName: string,
+      passWord: string,
+      email: string,
+      avatarurl: string,
+   }

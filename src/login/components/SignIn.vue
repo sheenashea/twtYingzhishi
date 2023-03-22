@@ -10,7 +10,7 @@
                  <input class="input" type="password" name="password" v-model.lazy="loginForm.password"><br>
                  <span class="details"><!--是否记住密码-->
                  <input class="checkbox" type="checkbox" name="rememberPassword" value="rememberPassword" v-model="loginForm.needToRemember">Remember Me
-                 <a href="javascript:;" style="float:right">Forget Login Details?</a><!--忘记密码的页面还没有-->
+                 <a href="javascript:;" style="float:right" @click="skipToForget()">Forget Login Details?</a>
                  </span>
             </div>
         <div class="btn" @click="submitlogininfo()">Login</div><!--提交-->
@@ -135,10 +135,11 @@ export default defineComponent({
         }, 
         //本地重写submitlogininfo()
         submitlogininfo () {
-            if(this.loginForm.username === '我' && this.loginForm.password === '12345678a')
+            if(this.loginForm.username === 'user' && this.loginForm.password === '1234abcd')
             {
                 this.userToken = new Date().getTime().toString();
                 sessionStorage.setItem('token',this.userToken);
+                sessionStorage.setItem('username',this.loginForm.username)
                 this.setUserInfo();
                 this.init();
                 this.$router.replace({
@@ -147,6 +148,9 @@ export default defineComponent({
             }else{
                 this.message = "登录失败"
             }
+        },
+        skipToForget () {
+            this.$emit('skipLink4');
         }
     }
 })
