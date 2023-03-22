@@ -68,19 +68,20 @@
   .left {
     float: left;
     width: 15%;
-    height: 780px;
+    height: 1000px;
     background-color: rgb(244,204,156);
     margin-right: -100%;
     position: fixed;
     z-index: 99999;
     border:1px solid black;
     border-top-right-radius: 2%;
+    margin-top: 0%;
   
   }
   .right{
       background-color: rgb(239, 235, 235);
       width: 100%;
-      height: 1000px;
+      height: 10000px;
       opacity: 0.5;
      
   }
@@ -90,17 +91,18 @@
     justify-content:space-between
   }
   .header {
-    background-color: aquamarine;
+    background-color: rgb(94, 208, 247);
     margin-left: 15%;
   }
   .main1 {
     margin-left: 15%;
     margin-top: 0%;
-    height: 80%;
+    height: 100%;
     background-color: rgb(238, 238, 244);
   }
   .search{
-    width:100%;
+    width:40%;
+    height: 10px;
     height: 4rem;
     background-color: rgb(94, 208, 247);
   }

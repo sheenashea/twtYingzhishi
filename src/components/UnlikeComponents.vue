@@ -1,8 +1,10 @@
 <template>
+  <div class="unlike">
     <div class="layOut img" @click="layOut">
         <img v-if="lay_type" src="../assets/unlikeblack.png" class="img" >
         <img v-else src="../assets/unlike.png" class="img" >
      </div>
+    </div>
 
 </template>
 <script>
@@ -35,6 +37,13 @@ export default {
 }
 </script>
 <style>
+.unlike{
+  width: 10%;
+  height: auto;
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 5px;
+}
 .img {
     width: 21px;
     height: 21px;

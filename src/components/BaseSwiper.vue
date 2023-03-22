@@ -74,16 +74,17 @@ export default {
 </script>
 <style scoped lang='less'>
 .swiperBox {
-    height: 20%;
+    height: 2%;
     width: 100%;
     position: relative;
     .imgLeft {
+        width: 50px;
         left: 0;
         top: 40%;
     }
     .imgLeft,
     .imgRight {
-        width: 27px;
+        width: 50px;
         height: 38px;
         position: absolute;
         cursor: pointer;

@@ -1,4 +1,5 @@
 <template>
+  <div class="like">
     <div id=''>
       <div class="circle flex-h" @click="handleClick" :class="isUp?'check':''">
         <div class="img-box" :class="isUp?'img-box-check':''">
@@ -7,6 +8,7 @@
         </div>
       </div>
     </div>
+  </div>
   </template>
   
   <script>
@@ -30,10 +32,16 @@
   }
   </script>
   <style lang='less' scoped>
+  .like{
+    width: 10%;
+    height: auto;
+    display: flex;
+    align-self: flex-end;
+  }
   .circle {
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0px 0px 0px 0px rgba(223, 46, 58, 0.5);
+    box-shadow: 0px 0px 0px 0px rgba(244, 238, 238, 0.5);
     .img-box {
       width: 20px;
       height: 20px;
