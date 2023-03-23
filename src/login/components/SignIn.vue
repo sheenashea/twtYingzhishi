@@ -5,9 +5,9 @@
         <span style="font-size:small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod</span>
             <div class = "container"><!--用户名-->
                  Username<br>
-                 <input class="input" type="text" name="username" v-model="loginForm.username"><br>
+                 <input class="input" type="text" name="username" v-model="loginForm.username" v-focus ref="loginName"><br>
                  Password<br><!--密码-->
-                 <input class="input" type="password" name="password" v-model.lazy="loginForm.password"><br>
+                 <input class="input" type="password" name="password" v-model.lazy="loginForm.password" ><br>
                  <span class="details"><!--是否记住密码-->
                  <input class="checkbox" type="checkbox" name="rememberPassword" value="rememberPassword" v-model="loginForm.needToRemember">Remember Me
                  <a href="javascript:;" style="float:right" @click="skipToForget()">Forget Login Details?</a>
@@ -54,6 +54,12 @@ export default defineComponent({
             this.loginForm.needToRemember = ["rememberPassword"]
         }
     },
+    mounted(){
+	this.$nextTick(()=>{      
+		(this.$refs.loginName as any).focus();
+	});
+},
+
     methods:{
         signInSkip(){
             this.$emit('skipLink1');

@@ -5,7 +5,7 @@
         <span style="font-size:small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod</span>
             <div class = "container">
                  Email<br><!--邮箱-->
-                 <input class="input" type="email" name="emailAddress" v-model="signUpForm.emailAddress"><br>
+                 <input class="input" type="email" name="emailAddress" v-model="signUpForm.emailAddress" v-focus ref="loginName"><br>
                  Username<br><!--用户名-->
                  <input class="input" type="text" name="username" v-model="signUpForm.username"><br>
                  Password<br><!--密码-->
@@ -39,6 +39,11 @@ export default defineComponent({
             },
         };
     },
+    mounted(){
+	this.$nextTick(()=>{      
+		(this.$refs.loginName as any).focus();
+	})
+},
     methods:{
         signUpSkip(){
             this.$emit('skipLink2');

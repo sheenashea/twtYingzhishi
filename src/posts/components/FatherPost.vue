@@ -7,7 +7,7 @@
                     <a href="javascript:void(0);">
                     <img class="photo" :src="pic">
                     </a>
-                    <h3 style="margin-bottom:0%;margin-left: 300px;">LV:{{ 114 }}</h3>
+                    <h3 style="margin-bottom:0%;margin-left: 300px;">LV:114</h3>
                 </div>
                 <div class="head">
                     <h2>{{ mainPost.title }}</h2>
