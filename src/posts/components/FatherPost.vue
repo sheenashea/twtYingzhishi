@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="content">
-         <p>{{ mainPost.content }}
+         <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ mainPost.content }}
         </p>
         </div>
         <div class="footer">

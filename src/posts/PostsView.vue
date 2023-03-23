@@ -1,4 +1,5 @@
 <template>
+    <div class="background">
     <div class="total">
         <div class="navigate">
         <ul>
@@ -18,6 +19,7 @@
         <FatherPost :mainPost = "reponse.postList" :authorInfo = "reponse.authorList" @update = "update($event)"></FatherPost>
         <ChildPost :comments = "reponse.commentVoList"></ChildPost>
     </div>
+</div>
 </template>
 
 <script lang="ts">
@@ -110,6 +112,7 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+
 .total{
     width: 100%;
     display: flex;
@@ -122,6 +125,7 @@ ul {
        padding: 0;
        overflow: hidden;
        background-color: lightgray;
+       background: url("../assets/background5.jpg");
     }
 
     li {
@@ -140,6 +144,7 @@ li a:hover{
   background-color: #ccc;
   text-decoration: none;
   color: black;
+  opacity: 0.75;
 }
 
 .dropdown-content {
@@ -154,6 +159,7 @@ li a:hover{
     padding: 10px 8px 15px;
     color: black;
     background-color: #f3f3f3;
+    background: url('../assets/background5.jpg');
     border-radius: 4px;
     .menuItem {
     width: 100%;
@@ -165,6 +171,7 @@ li a:hover{
     border-radius: 4px;
     &:hover {
         background-color: #ccc;
+        opacity: 0.75;
     }
 }
 
@@ -176,4 +183,5 @@ li a:hover{
     opacity: 1;
     transition: all 0.6s ease-in-out;
 }
+
 </style>

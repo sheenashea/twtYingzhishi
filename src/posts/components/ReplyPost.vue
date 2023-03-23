@@ -14,8 +14,8 @@
                      <input type="checkbox" v-model="newcomment.isChecked">我已阅读并同意
                  </div>
                  <div>
-                     <button class="btn" style="top:0;right:131px;background-color: blue;" @click="submit()">发布</button>
-                     <button class="btn" style="top:0;right:0px;background-color: blue;" @click="cancel()">取消</button>
+                     <button :class="{'btn':!newcomment.newtext.length,'btn2':newcomment.newtext.length}" style="top:0;right:131px;" @click="submit()">发布</button>
+                     <button class="btn2" style="top:0;right:0px;" @click="cancel()">取消</button>
                  </div>
             </div>
         </div>
@@ -61,11 +61,11 @@ export default defineComponent({
                 console.log('ok');
                 if(this.newcomment.newtext.length)
                 {
-                    this.tosubmit()
+                    this.tosubmit();
+                    this.newcomment.isChecked = [];
+                    this.newcomment.newtext = '';
+                    this.$emit('cancel');
                 }
-                this.newcomment.isChecked = [];
-                this.newcomment.newtext = '';
-                this.$emit('cancel');
             }else{
                  this.ahint = 'hint';
                  setTimeout(() => {
@@ -123,6 +123,7 @@ export default defineComponent({
             //传值结束
         }
     },
+    
 
 })
 </script>
@@ -131,7 +132,7 @@ export default defineComponent({
 .box{
     height: 130px;
     width:850px;
-    background-color: lightblue;
+    background-color: aliceblue;
     border: 2px solid lightseagreen;
     padding:0 20px;
     border-radius: 7px;
@@ -164,10 +165,26 @@ export default defineComponent({
     font-size:10px;
     font-weight: 500;
     color:#fff;
-    background-color: rgb(118,211,248);
+    letter-spacing: 2px;
+    background-color: lightblue;
+}
+
+.btn2 {
+    position:absolute;
+    top:13px;
+    right:30px;
+    width:120px;
+    height:27px;
+    border: 0;
+    border-radius: 5px;
+    font-size:10px;
+    font-weight: 500;
+    color:#fff;
     cursor:pointer;
     letter-spacing: 2px;
+    background-color:blue;
 }
+
 .foot{
     position:absolute;
     top: 83px;
