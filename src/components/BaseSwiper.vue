@@ -22,10 +22,10 @@ export default {
     data() {
         return {
             imgList: [
-                require('../assets/logo1.png'),
-                require('../assets/logo2.png'),
-                require('../assets/logo3.png'),
-                require('../assets/logo4.png'),
+                require('../assets/radier3.png'),
+                require('../assets/radier8.png'),
+                require('../assets/radier9.png'),
+                require('../assets/radier10.png'),
             ],
             timer: null,
             theSpeed: this.speed,
@@ -74,13 +74,15 @@ export default {
 </script>
 <style scoped lang='less'>
 .swiperBox {
-    height: 2%;
+    height: 20%;
     width: 100%;
     position: relative;
+    margin-left: 0.5%;
     .imgLeft {
         width: 50px;
         left: 0;
         top: 40%;
+        opacity: 90%;
     }
     .imgLeft,
     .imgRight {
@@ -88,10 +90,12 @@ export default {
         height: 38px;
         position: absolute;
         cursor: pointer;
+        opacity: 0.5;
     }
     .imgRight {
         right: 0;
         top: 40%;
+        opacity: 50%;
     }
     .directionIcon:hover {
         opacity: 1;

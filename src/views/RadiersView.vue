@@ -69,12 +69,13 @@ export default {
   width: 100%;
   height: 100%;
   justify-content: center;
+  margin-top: 5%;
 }
 .p0{
   width: 80%;
   height: 250px;
   background-color: #ccc;
-  margin-top: 10px;
+  margin-top: 10%;
   margin-left: 10%;
   height: 130px;
   display: flex;

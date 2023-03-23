@@ -1,13 +1,13 @@
 <template>卡组排行<div class="rank">
-    <div class="t0"><img class="imgBox" src="../assets/deck1.png"><span>卡组：刀贼</span><h2>盘点十祸退环境单卡</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck2.png"><span>卡组：野兽德</span><h2>这可能就是完爆吧</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck3.png"><span>卡组: T7猎</span><h2>啊摆</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck4.png"><span>卡组: 快攻德</span><h2>寄</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck1.png"><span>卡组：刀贼</span><h2>盘点十祸退环境单卡</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck2.png"><span>卡组：野兽德</span><h2>这可能就是完爆吧</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck3.png"><span>卡组: T7猎</span><h2>啊摆</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck4.png"><span>卡组: 快攻德</span><h2>寄</h2></div>
-    <div class="t0"><img class="imgBox" src="../assets/deck4.png"><span>卡组: 快攻德</span><h2>寄</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier1.png"><span>卡组：刀贼</span><h2>盘点十祸退环境单卡</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier2.png"><span>卡组：野兽德</span><h2>这可能就是完爆吧</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier3.png"><span>卡组: T7猎</span><h2>啊摆</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier4.png"><span>卡组: 快攻德</span><h2>寄</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier5.png"><span>卡组：刀贼</span><h2>盘点十祸退环境单卡</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier6.png"><span>卡组：野兽德</span><h2>这可能就是完爆吧</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier7.png"><span>卡组: T7猎</span><h2>啊摆</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier8.png"><span>卡组: 快攻德</span><h2>寄</h2></div>
+    <div class="t0"><img class="imgBox" src="../assets/radier9.png"><span>卡组: 快攻德</span><h2>寄</h2></div>
   </div>
 </template>
 <script>
