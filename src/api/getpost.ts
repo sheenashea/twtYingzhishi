@@ -58,7 +58,7 @@ const ans = {
             showinput: false
           }
           ],
-          replyCount: 0,
+          replyCount: 1,
           showinput: false,
         }
     ]

@@ -85,7 +85,7 @@ export default defineComponent({
                      comment: this.newcomment.newtext,
                      author: {
                           id: '011',
-                          loginName: '我',
+                          loginName: sessionStorage.getItem('username'),
                           avatarurl: '../../assets/1.jpg',
                      },
                      likeCount: 0,
@@ -104,7 +104,7 @@ export default defineComponent({
                     reply: this.newcomment.newtext,
                     author: {
                     id: '011',
-                    loginName: '我',
+                    loginName: 'user',
                     avatarurl: '../../assets/1.jpg',
                     },
                     target: {

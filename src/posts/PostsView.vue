@@ -95,6 +95,7 @@ export default defineComponent({
         update(e: commentVoList)
         {
             this.reponse.commentVoList.push(e);
+            this.reponse.postList.commentCount++;
         },
         drop () {
             if(this.dropdown == 'dropdown-content') this.dropdown = 'dropdown-content2';
@@ -102,6 +103,7 @@ export default defineComponent({
         },
         removeLogin () {
             sessionStorage.removeItem('token')
+            sessionStorage.removeItem('username')
         }
     }
 })

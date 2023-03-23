@@ -113,6 +113,7 @@ export default defineComponent({
         },
         update (e: replyList, i:commentVoList) {
              i.replyList.push(e);
+             i.replyCount++;
         }
      },
 })

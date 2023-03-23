@@ -13,26 +13,32 @@
           <a href="/mypage" class="menuItem" >个人中心</a>
        </div>
     </div>
-    <div v-show="showLogin" class="label">
-         <SignIn @skipLink1="skipLink()"></SignIn>
+    <div v-show="showLogin && showLogin2" class="label">
+         <SignIn @skipLink1="skipLink()" @skipLink4="skipLink2()"></SignIn>
     </div>
     <div v-show="!showLogin" class="label">
         <SignUp @skipLink2="skipLink()"></SignUp>
     </div>
+    <div v-show="!showLogin2" class="label">
+        <forget-password @skipLink3="skipLink2()"></forget-password>
+    </div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
+import ForgetPassword from './components/ForgetPassword.vue'
 import SignIn from './components/SignIn.vue'
 import SignUp from './components/SignUp.vue'
 export default defineComponent ({
     name: 'LoginView',
     components: {
         SignIn,
-        SignUp
+        SignUp,
+        ForgetPassword
     },
     data(){
        return{
            showLogin: true,
+           showLogin2: true,
            dropdown: 'dropdown-content',
        }
     },
@@ -40,6 +46,9 @@ export default defineComponent ({
         skipLink(){
             this.showLogin = !this.showLogin;
             //console.log(this.showLogin); 
+        },
+        skipLink2 () {
+            this.showLogin2 = !this.showLogin2;
         },
         drop () {
             if(this.dropdown == 'dropdown-content') this.dropdown = 'dropdown-content2';
