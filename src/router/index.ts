@@ -3,7 +3,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/index',
+    redirect: '/radiers',
   },
   {
      path: '/index',
@@ -50,7 +50,7 @@ const router = createRouter({
 //路由守卫begin
 router.beforeEach((to, from, next) => {
   //如果去往登录页和主页则放行 
-    if (to.path === '/login' || to.path === '/index') {
+    if (to.path === '/login' || to.path === '/radiers') {
       next();
     } else {
       // 从本地存储里获取token

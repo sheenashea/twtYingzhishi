@@ -8,7 +8,7 @@
     </div>
     <div :class="dropdown">
        <div class="dropdown-menu">
-          <a href="/radiers" class="menuItem" >攻略爆料</a>
+          <a href="/radiers" class="menuItem" >社区交流</a>
           <a href="/deck" class="menuItem" >卡组排行</a>
           <a href="/posts" class="menuItem">帖子页面</a>
           <a href="/login" class="menuItem" @click="removeLogin()">退出登录</a>
