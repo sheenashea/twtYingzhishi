@@ -17,7 +17,7 @@
     <!--导航栏结束，以下是个人中心-->
     <div>
         <div class="PersonTop">
-           <div class="PersonTop_img">
+           <div class="PersonTop_img hvr-grow">
               <img v-img-preview src="../assets/profile.jpg" style="width:130px;height:130px;border-radius: 20px;"/>
            </div>
            <div class="PersonTop_text">
@@ -170,6 +170,7 @@ export default defineComponent({
      margin-left: 20px;
      overflow: hidden;
      border-radius: 20px;
+     
 }
 .PersonTop_text {
      height: 120px;
@@ -282,5 +283,23 @@ input{
   border-radius: 3px;
   
 }
+
+/* Grow */
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 
 </style>

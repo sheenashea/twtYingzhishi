@@ -74,7 +74,8 @@ export default defineComponent ({
        margin: 0;
        padding: 0;
        overflow: hidden;
-       background-color:rgba(255,255,255,0.75);
+       background-color:rgba(104, 141, 182, 0.75);
+       opacity: 0.5;
     }
 
     li {
@@ -93,6 +94,7 @@ li a:hover{
   background-color: lightblue;
   text-decoration: none;
   color: black;
+  font-size: large;
 }
 
 .dropdown-content {
