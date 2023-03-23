@@ -37,14 +37,16 @@
     height: auto;
     display: flex;
     align-self: flex-end;
+    margin-bottom: 0%;
+    margin-top: 100%;
   }
   .circle {
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0px 0px 0px 0px rgba(244, 238, 238, 0.5);
+    box-shadow: 0px 0px 0px 0px rgba(204, 100, 100, 0.5);
     .img-box {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 23px;
       margin: 5px;
       -moz-user-select: none;
       -webkit-user-select: none;

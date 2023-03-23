@@ -149,7 +149,7 @@ export default defineComponent({
                 this.setUserInfo();
                 this.init();
                 this.$router.replace({
-                    path: '/index'
+                    path: '/radiers'
                 });
             }else{
                 //this.message = "登录失败"

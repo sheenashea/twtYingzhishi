@@ -4,7 +4,7 @@
       <div class="left">
         <div class="main">
   <div class="navigation1">
-      <router-link to="/radiers" class="top-button">攻略爆料</router-link>
+      <router-link to="/radiers" class="top-button">社区交流</router-link>
   </div>
   <div class="navigation2">
       <router-link to="/deck" class="bottom-button">卡组排行</router-link>
@@ -14,13 +14,13 @@
       <div class="right">
         <div class="navigate">
         <ul>
-          <li><a href="javascript:void(0);"><i class="iconfont" @click="drop()">&#xe60b;</i></a></li>
-          <li><a href="/index">Return to HomePage</a></li>
+          <li><a href="javascript:void(0);"><i class="iconfont" @click="drop()" style="color: white;">&#xe60b;</i></a></li>
+          <li><a href="/index" style="color: white;">Return to HomePage</a></li>
         </ul>
     </div>
     <div :class="dropdown">
        <div class="dropdown-menu">
-          <a href="/radiers" class="menuItem" >攻略爆料</a>
+          <a href="/radiers" class="menuItem" >社区交流</a>
           <a href="/deck" class="menuItem" >卡组排行</a>
           <a href="/posts" class="menuItem">帖子页面</a>
           <a href="/mypage" class="menuItem" >个人中心</a>
@@ -91,8 +91,10 @@
        margin: 0;
        padding: 0;
        overflow: hidden;
-       background-color: aliceblue;
-      
+       background-color: rgb(0, 0, 0);
+       opacity: 0.5;
+       border:1px solid #807e19;;
+       border-top-right-radius: 2%;  
     }
 
     li {

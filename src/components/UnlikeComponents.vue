@@ -42,7 +42,7 @@ export default {
   height: auto;
   display: flex;
   align-self: flex-end;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 .img {
     width: 21px;
