@@ -19,7 +19,6 @@
         </div>
     </form>
     <br>
-    <span>{{ message }}</span>
     </div>
 </template>
 
@@ -28,6 +27,7 @@ import { defineComponent } from 'vue';
 
 import{ getCookie,setCookie } from '../../utils/cookie'
 import{ login } from '../../api/sign'
+import { ElMessage } from 'element-plus';
 const Base64 = require('js-base64').Base64
 export default defineComponent({
     name:'SignIn',
@@ -38,7 +38,6 @@ export default defineComponent({
                 password: '',
                 needToRemember: [] as string []
             },
-            message:'',
             userToken:''
         }
     },
@@ -103,18 +102,25 @@ export default defineComponent({
             const checkuserName = /^[a-zA-Z0-9_-]{1,16}$/;
             if(!checkuserName.test(this.loginForm.username))
             {
-                this.message = "用户名格式错误"
+                //this.message = "用户名格式错误"
+                ElMessage({
+                    message:'用户名格式错误',
+                    duration:2000,
+                })
                 okk = false;
             }else{
             const ckeckpassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/;
             if(!ckeckpassword.test(this.loginForm.password)){
-                this.message = "密码格式错误"
+                //this.message = "密码格式错误"
+                ElMessage({
+                    message:'密码格式错误',
+                    duration:2000,
+                })
                 okk = false;
             }}
             return okk;
         },
         init(){
-            this.message = ''
             this.loginForm.username = ''
             this.loginForm.password = ''
         },
@@ -146,7 +152,11 @@ export default defineComponent({
                     path: '/index'
                 });
             }else{
-                this.message = "登录失败"
+                //this.message = "登录失败"
+                ElMessage({
+                    message:'登录失败',
+                    duration:2000,
+                })
             }
         },
         skipToForget () {

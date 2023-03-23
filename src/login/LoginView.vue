@@ -1,4 +1,5 @@
 <template>
+    <div class="background">
     <div class="navigate">
         <ul>
           <li><a href="javascript:void(0);"><i class="iconfont" @click="drop()">&#xe60b;</i></a></li>
@@ -22,6 +23,7 @@
     <div v-show="!showLogin2" class="label">
         <forget-password @skipLink3="skipLink2()"></forget-password>
     </div>
+</div>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -63,12 +65,16 @@ export default defineComponent ({
        text-align: center;
     }
 
+    .navigate {
+        background-color:rgba(255,255,255,0.75);
+    }
+
     ul {
        list-style-type: none;
        margin: 0;
        padding: 0;
        overflow: hidden;
-       background-color: aliceblue;
+       background-color:rgba(255,255,255,0.75);
     }
 
     li {
@@ -99,7 +105,7 @@ li a:hover{
     margin-top: 7px;
     padding: 10px 8px 15px;
     color: black;
-    background-color: aliceblue;
+    background-color:rgba(255,255,255,0.75);
     border-radius: 4px;
     .menuItem {
     width: 100%;
@@ -121,5 +127,14 @@ li a:hover{
     visibility: visible;
     opacity: 1;
     transition: all 0.6s ease-in-out;
+}
+
+.background {
+    width:100%;
+    height: 770px;
+    background:url(../assets/background3.jpg);
+    background-size: cover;
+    -webkit-font-smoothing: antialiased;
+    background-color: #55585a+7a
 }
 </style>

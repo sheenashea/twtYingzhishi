@@ -18,7 +18,7 @@
     <div>
         <div class="PersonTop">
            <div class="PersonTop_img">
-              <img v-img-preview src="../assets/1.jpg" style="width:130px;height:130px;border-radius: 20px;"/>
+              <img v-img-preview src="../assets/profile.jpg" style="width:130px;height:130px;border-radius: 20px;"/>
            </div>
            <div class="PersonTop_text">
                <div class="user_text">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="one">头像</div>
                 <div class="two">
-                    <img src="../assets/1.jpg">
+                    <img src="../assets/profile.jpg">
                 </div>
                 <div class="one">ip地址</div>
                 <div class="two" >{{ userInfo.address }}</div>
@@ -76,6 +76,7 @@
 import { defineComponent } from 'vue'
 import { getPersonPage } from '../api/person'
 import type { UserInfoRes } from '@/api/types'
+import { ElMessage } from 'element-plus'
 export default defineComponent({
     name: 'PersonPage',
     data () {
@@ -115,7 +116,12 @@ export default defineComponent({
                 this.operate = "保存"
                 this.toEdit = true;
             }else {
-                alert('用户名或密码不合规范，修改失败')
+                //alert('用户名或密码不合规范，修改失败')
+                ElMessage({
+                    message:'用户名或密码不合规范，修改失败',
+                    duration:2000,
+                    
+                })
             }
         },
         check(a: string | undefined, b:string){

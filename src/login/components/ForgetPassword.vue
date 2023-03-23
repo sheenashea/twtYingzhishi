@@ -19,13 +19,13 @@
         </div>
     </form>
     <br>
-    <span>{{ message }}</span>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { submit } from '../../api/sign'
+import { ElMessage } from 'element-plus';
 
 export default defineComponent({
     name:'SignUp',
@@ -37,7 +37,6 @@ export default defineComponent({
                 password:'',
                 confirm:''
             },
-            message:'',//返回找回密码是否成功的信息
         };
     },
     methods:{
@@ -47,18 +46,30 @@ export default defineComponent({
         check(){
             let okk = true;
             if(this.forgetForm.confirm!==this.forgetForm.password){
-                this.message = "两次输入密码不一致"
+                //this.message = "两次输入密码不一致"
+                ElMessage({
+                    message:'两次输入密码不一致',
+                    duration:2000,
+                })
                 okk = false;
             }else{
             const checkuserName = /^[a-zA-Z0-9_-]{1,16}$/;
             if(!checkuserName.test(this.forgetForm.username))
             {
-                this.message = "用户名长度为1到16";
+                //this.message = "用户名长度为1到16";
+                ElMessage({
+                    message:'用户名长度为1到16',
+                    duration:2000,
+                })
                 okk = false;
             }else{
             const ckeckpassword = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/;
             if(!ckeckpassword.test(this.forgetForm.password)){
-                this.message = "密码长度为6到15且至少包含一个数字和字母"
+                //this.message = "密码长度为6到15且至少包含一个数字和字母"
+                ElMessage({
+                    message:'密码长度为6到15且至少包含一个数字和字母',
+                    duration:2000,
+                })
                 okk = false;
             }}}
             return okk;
@@ -71,9 +82,12 @@ export default defineComponent({
                 email: this.forgetForm.emailAddress
             }
           await submit(form),
-          this.message = '找回密码成功'
+          //this.message = '找回密码成功'
+          ElMessage({
+                    message:'找回密码成功',
+                    duration:2000,
+                })
           setTimeout(() => {
-            this.message = ''
             this.forgetForm.emailAddress = ''
             this.forgetForm.username = ''
             this.forgetForm.password = ''

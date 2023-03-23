@@ -4,7 +4,7 @@
         <div class="first">
            <div style="display:flex;flex-direction:column">
            <a href="javascript:;" class="first-img">
-              <img src= '../../assets/1.jpg' />
+              <img src= '../../assets/profile.jpg' />
            </a>
            <a href="javascript:;" style="font-size:xx-small;flex-shrink: 1;user-select: none;" ></a>
            </div>
@@ -31,7 +31,7 @@
                         <div class="lis">
                         <div class="topp">
                             <a href="JavaScript:;" class="second-img">
-                                <img src="../../assets/1.jpg">
+                                <img src="../../assets/profile.jpg">
                             </a>
                         </div>
                             <div class="info">

@@ -14,10 +14,10 @@ const ans = {
     },
     authorList: {
       userId: '0',
-      loginName: "sss",
+      loginName: "双叶",
       password: '19287365',
       email: "302224111@tju.com",
-      avatarurl: '1.jpg',
+      avatarurl: 'profile2.jpg',
       likeCount: 12,
       likeStatus: true,
       dislikeCount: 0,
@@ -30,7 +30,7 @@ const ans = {
           comment: "string",
           author: {
             id: '1',
-            loginName: "熊童子",
+            loginName: "桃金娘www",
             avatarurl: '1.jpg',
           },
           likeCount: 0,
@@ -43,12 +43,12 @@ const ans = {
             reply: "沙发",
             author: {
                id: '2',
-               loginName: "hhh",
+               loginName: "Donald&",
                avatarurl: '../../assets/1.jpg',
             },
             target: {
                id: '1',
-               loginName: "熊童子",
+               loginName: "桃金娘www",
                avatarurl: '../../assets/1.jpg',
             },
             likeCount: 0,

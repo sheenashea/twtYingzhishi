@@ -86,7 +86,7 @@ export default defineComponent({
                      author: {
                           id: '011',
                           loginName: sessionStorage.getItem('username'),
-                          avatarurl: '../../assets/1.jpg',
+                          avatarurl: '../../assets/radier1.png',
                      },
                      likeCount: 0,
                      likeStatus: false,
