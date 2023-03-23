@@ -82,7 +82,10 @@ li {
       content: ".";
       color: rgb(0, 0, 0);
       text-shadow:
-                        0px -1px 0px #c0c0c0,
+                        0px -1px 0px #cece0c;
+      font-size: large;
+      
+
 
 }
 h5{

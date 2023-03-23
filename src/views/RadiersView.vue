@@ -10,11 +10,11 @@
       <!-- <div v-for = "(post, index) in RadierPost" :key=index> -->
       <img class="imgBox" src="../assets/radier1.png" alt="">
       <div class="post12">
-        <div class="text">
+        <router-link to="/posts" class="top-button hvr-bubble-float-right"> <div class="text">
           <H3>用户</H3>
           <img src="../assets/profile2.jpg" class="profile"><span>双叶</span>
           <h1>[破事水]为啥都说新耶拉是终端</h1>
-        </div>
+        </div></router-link> 
       <div class="component">
       <LikeComponents></LikeComponents><UnlikeComponents></UnlikeComponents><div class="comment"><i class="iconfont comm" @click="show1(item)">&#xe607;</i></div></div></div></div>
     <div class="p1">
@@ -139,7 +139,7 @@ export default {
 }
 .comment{
   align-self: flex-end;
-  margin-bottom: 0.4%;
+  margin-bottom: 0.6%;
 }
 .post12{
   display: flex;
@@ -147,6 +147,7 @@ export default {
   height: 100%;
   flex-wrap: nowrap;
   flex-direction: column;
+  margin-top: 0%;
 }
 .component{
   display: flex;
@@ -156,6 +157,7 @@ export default {
   height: 20%;
   align-content: end;
   align-items: flex-end;
+  margin-bottom: 5%;
 }
 .text{
 
@@ -168,5 +170,46 @@ export default {
   width: 60px;
   height: 60px;
 }
-
+.router-link-active {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+    }
+    a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.hvr-bubble-float-right {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-bubble-float-right:before {
+  position: absolute;
+  z-index: -1;
+  top: calc(50% - 10px);
+  right: 0;
+  content: '';
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #e1e1e1;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-bubble-float-right:hover, .hvr-bubble-float-right:focus, .hvr-bubble-float-right:active {
+  -webkit-transform: translateX(-10px);
+  transform: translateX(-10px);
+}
+.hvr-bubble-float-right:hover:before, .hvr-bubble-float-right:focus:before, .hvr-bubble-float-right:active:before {
+  -webkit-transform: translateX(10px);
+  transform: translateX(10px);
+}
 </style>

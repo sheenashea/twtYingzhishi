@@ -4,10 +4,10 @@
       <div class="left">
         <div class="main">
   <div class="navigation1">
-      <router-link to="/radiers" class="top-button">社区交流</router-link>
+      <router-link to="/radiers" class="top-button hvr-grow-shadow">社区交流</router-link>
   </div>
   <div class="navigation2">
-      <router-link to="/deck" class="bottom-button">卡组排行</router-link>
+      <router-link to="/deck" class="bottom-button hvr-grow-shadow">卡组排行</router-link>
   </div>
   </div>
       </div>
@@ -15,7 +15,7 @@
         <div class="navigate">
         <ul>
           <li><a href="javascript:void(0);"><i class="iconfont" @click="drop()" style="color: white;">&#xe60b;</i></a></li>
-          <li><a href="/index" style="color: white;">Return to HomePage</a></li>
+          <li><a href="/radiers" style="color: white;">Return to HomePage</a></li>
         </ul>
     </div>
     <div :class="dropdown">
@@ -267,5 +267,21 @@ li a:hover{
   .router-link-active {
       text-decoration: none;
     }
+    .hvr-grow-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(6px) translateZ(0);
+  box-shadow: 0 0 1px rgba(245, 30, 30, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+  box-shadow: 0 20px 20px -10px rgba(44, 128, 225, 0.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.3);
+}
   </style>
   
